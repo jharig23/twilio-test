@@ -1,0 +1,39 @@
+<%= form_for(@txt_test, :url => {:action => "send_message"}) do |f| %>
+
+  <h1> Messages </h1>
+  <%= @message %>
+  
+  <div>
+    <%= f.label :account_sid %>
+    <%= f.text_field :account_sid %>
+  </div>
+
+
+  <div>
+    <%= f.label :auth_token %>
+    <%= f.text_field :auth_token %>
+  </div>
+
+  <h4>Numbers should not have country code!<h4>
+  <div>
+    <%= f.label :from %>
+    <%= f.text_field :from %>
+  </div>
+
+
+  <div>
+    <%= f.label :to %>
+    <%= f.text_field :to %>
+  </div>
+
+
+  <div>
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
