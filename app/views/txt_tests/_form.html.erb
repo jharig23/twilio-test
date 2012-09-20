@@ -1,7 +1,9 @@
 <%= form_for(@txt_test, :url => {:action => "send_message"}) do |f| %>
 
   <h1> Messages </h1>
+  <pre>
   <%= @message %>
+  </pre>
   
   <div>
     <%= f.label :account_sid %>
