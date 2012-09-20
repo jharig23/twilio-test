@@ -20,8 +20,8 @@ class TxtTestsController < ApplicationController
     
     # send raw
     begin
-      client.account.sms.messages.create( :from => from,
-                                          :to => to, 
+      client.account.sms.messages.create( :from => "+1" + from,
+                                          :to => "+1" + to, 
                                           :body => @txt_test.message)
       @message = @message + "\n\nSent message as raw"
     rescue
