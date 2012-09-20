@@ -2,6 +2,7 @@ class TxtTestsController < ApplicationController
   
   require 'twilio-ruby'
   include ActionView::Helpers::NumberHelper
+  include ActiveSupport
 
   def new
     @txt_test = TxtTest.new
@@ -38,6 +39,15 @@ class TxtTestsController < ApplicationController
       @message = @message + "\n\nUnable to send as String text message!  \nError: #{$!}"
     end
 
+    # send as SafeBuffer
+    begin
+      client.account.sms.messages.create( :from => SafeBuffer.new("+1#{from}"), 
+                                          :to => SafeBuffer.new("+1#{to}"), 
+                                          :body => String.new("Sent as String: #{@txt_test.message}"))
+      @message = @message + "\n\nSent message converted to SafeBuffer"
+    rescue
+      @message = @message + "\n\nUnable to send as SafeBuffer!  \nError: #{$!}"
+    end
     
     # convert to phone number
     begin
