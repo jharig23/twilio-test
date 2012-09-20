@@ -14,5 +14,5 @@ And here's the error that it produces:
     Error: undefined method `ord' for nil:NilClass
 
 
-I've verified that the `number_to_phone` method produces a non-nil result.  I believe the issue is possibly caused by the fact that `number_to_phone` yields an `ActiveSupport::SafeBuffer` instead of a `String`
+I've verified that the `number_to_phone` method produces a non-nil result.  I believe the issue is possibly caused by the fact that `number_to_phone` yields an `ActiveSupport::SafeBuffer` instead of a `String`.  In fact, I've verified that wrapping a `SafeBuffer` around a string also causes the problem.
 
